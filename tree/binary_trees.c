@@ -11,7 +11,6 @@ public:
 
 node T[MAXt];
 
-
 int H[MAXt];
 
 int seth(int u)
