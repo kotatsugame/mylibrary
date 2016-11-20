@@ -62,3 +62,13 @@ double cross(Vector a,Vector b)
 {
 	return a.x*b.y-a.y*b.x;
 }
+
+double norm(Vector a)
+{
+	return a.x*a.x+a.y*a.y;
+}
+
+double abs(Vector a)
+{
+	return sqrt(norm(a));
+}

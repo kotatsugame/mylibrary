@@ -1,7 +1,7 @@
-const int MAXn=100;
+const int MAX=100;
 const int INFTY=1<<21;
 
-int n,M[MAXn][MAXn],col[MAXn],d[MAXn],p[MAXn];
+int n,M[MAX][MAX],col[MAX],d[MAX],p[MAX];
 
 void dijkstra(int s)
 {

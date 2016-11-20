@@ -1,8 +1,8 @@
-const int MAXn=10000;
-const int INFTY=1<<21;
+const int MAX=100000;
+const int INFTY=1<<30;
 
-int n,col[MAXn],d[MAXn];
-vector<pair<int,int>> Q[MAXn];
+int n,col[MAX],d[MAX];
+vector<pair<int,int>> Q[MAX];//target,weight
 
 void dijkstra(int s)
 {

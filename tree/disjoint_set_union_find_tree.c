@@ -12,8 +12,8 @@ public:
 	}
 	disjointset(int s)
 	{
-		rank.resize(s,0);
-		p.resize(s,0);
+		rank.resize(s);
+		p.resize(s);
 		for(int i=0;i<s;i++)makeset(i);
 		return;
 	}

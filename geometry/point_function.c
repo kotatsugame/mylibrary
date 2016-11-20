@@ -4,16 +4,6 @@ const int on_segment=0;
 const int online_back=2;
 const int online_front=-2;
 
-double norm(Vector a)
-{
-	return a.x*a.x+a.y*a.y;
-}
-
-double abs(Vector a)
-{
-	return sqrt(norm(a));
-}
-
 bool isorthogonal(Vector a,Vector b)
 {
 	return equals(dot(a,b),0.0);
@@ -61,7 +51,7 @@ double getdistance(Point a,Point b)
 	return abs(a-b);
 }
 
-double getdistancelp(Line l,Point p)//Line,Point
+double getdistancelp(Line l,Point p)
 {
 	double s=abs(cross(l.p2-l.p1,p-l.p1));
 	return s/abs(l.getvector());
@@ -124,7 +114,7 @@ double arg(Vector p)
 	return atan2(p.y,p.x);
 }
 
-Point polar(double r,double theta)
+Vector polar(double r,double theta)
 {
 	return Point(r*cos(theta),r*sin(theta));
 }
@@ -135,4 +125,53 @@ pair<Point,Point> getcrosspoint(Circle c1,Circle c2)
 	double a=acos((c1.r*c1.r+d*d-c2.r*c2.r)/(2.0*c1.r*d));
 	double t=arg(c2.c-c1.c);
 	return make_pair(c1.c+polar(c1.r,t+a),c1.c+polar(c1.r,t-a));
+}
+
+int intersect(Circle c1,Circle c2)
+{
+	double d=abs(c2.c-c1.c);
+	if(equals(d,c1.r+c2.r))return 3;
+	else if(d>c1.r+c2.r)return 4;
+	else if(equals(d,abs(c1.r-c2.r)))return 1;
+	else if(d>abs(c1.r-c2.r))return 2;
+	else return 0;
+}
+
+pair<Point,Point> gettangentpoint(Circle c,Point p)
+{
+	double d=abs(p-c.c);
+	double l=sqrt(d*d-c.r*c.r);
+	double a=asin(c.r/d);
+	double t=arg(c.c-p);
+	return make_pair(p+polar(l,t+a),p+polar(l,t-a));
+}
+
+vector<Point> gettangentpoint(Circle c1,Circle c2)
+{
+	vector<Point> p;
+	int n=intersect(c1,c2);
+	double d=abs(c2.c-c1.c);
+	double t=arg(c2.c-c1.c);
+	double a;
+	
+	if(n==1||n==3)
+	{
+		if(c1.r<c2.r&&n==1)p.push_back(c1.c-(c2.c-c1.c)*c1.r/d);
+		else p.push_back(c1.c+(c2.c-c1.c)*c1.r/d);
+	}
+	if(n==2||n==3||n==4)
+	{
+		a=acos((c1.r-c2.r)/d);
+		p.push_back(c1.c+polar(c1.r,t+a));
+		p.push_back(c1.c+polar(c1.r,t-a));
+	}
+	if(n==4)
+	{
+		a=acos((c1.r+c2.r)/d);
+		p.push_back(c1.c+polar(c1.r,t+a));
+		p.push_back(c1.c+polar(c1.r,t-a));
+	}
+	
+	sort(p.begin(),p.end());
+	return p;
 }

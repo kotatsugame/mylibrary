@@ -1,7 +1,7 @@
-const int MAXn=100;
+const int MAX=100;
 
-int n,M[MAXn][MAXn]={0},nt[MAXn],col[MAXn];//color:0=white,1=gray,2=brack
-int d[MAXn],f[MAXn],t;
+int n,M[MAX][MAX]={0},nt[MAX],col[MAX];//color:0=white,1=gray,2=brack
+int d[MAX],f[MAX],t;
 
 int next(int u)
 {

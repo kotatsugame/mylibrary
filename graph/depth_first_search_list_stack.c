@@ -1,8 +1,8 @@
-const int MAXn=100000;
+const int MAX=100000;
 const int NIL=-1;
 
-int n,col[MAXn];
-vector<int> G[MAXn];
+int n,col[MAX];
+vector<int> G[MAX];
 
 void dfs(int r,int c)
 {

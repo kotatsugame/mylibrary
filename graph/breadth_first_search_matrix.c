@@ -1,14 +1,14 @@
-const int MAXn=100;
+const int MAX=100;
 const int INFTY=1<<21;
 
-int n,M[MAXn][MAXn]={0},d[MAXn];
+int n,M[MAX][MAX]={0},d[MAX];
 
 void bfs(int u)
 {
 	queue<int> Q;
-	Q.push(s);
+	Q.push(u);
 	for(int i=0;i<n;i++)d[i]=INFTY;
-	d[s]=0;
+	d[u]=0;
 	int v;
 	
 	while(!Q.empty())
@@ -23,7 +23,7 @@ void bfs(int u)
 		}
 	}
 	
-	for(int i=0;i<n;i++)cout<<i+1<<" "<<d[i]==INFTY?-1:d[i]<<endl;
+	for(int i=0;i<n;i++)cout<<i+1<<" "<<(d[i]==INFTY?-1:d[i])<<endl;
 	
 	return;
 }
