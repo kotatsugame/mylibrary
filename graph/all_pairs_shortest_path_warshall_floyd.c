@@ -1,8 +1,10 @@
-static const int MAX=100;
-static const long long int INFTY=1LL<<32;
+typedef long long int ll;
+
+const int MAX=100;
+const ll INFTY=1LL<<32;
 
 int n;
-long long int M[MAX][MAX];
+ll M[MAX][MAX];//diagonal component=0
 
 void floyd()
 {

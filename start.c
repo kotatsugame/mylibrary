@@ -14,5 +14,6 @@
 #include<stack>
 #include<map>
 #include<set>
+#include<cstring>
 using namespace std;
 typedef long long int ll;
